@@ -1,0 +1,14 @@
+services:
+  api:
+    image: hollywood-api
+    ports:
+      - 3000:3000
+  postgres:
+    image: postgres:latest
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: hxcuber
+      POSTGRES_PASSWORD: hxcuber

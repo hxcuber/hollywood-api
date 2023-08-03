@@ -1,8 +1,8 @@
-output = "../../internal/model"
+output = "../../internal/models"
 [psql]
 dbname = "hollywood"
 host   = "localhost"
 port   = 5432
-user   = "hxcuber"
-pass   = "12345678"
+user   = "postgres"
+pass   = "postgres"
 sslmode = "disable"

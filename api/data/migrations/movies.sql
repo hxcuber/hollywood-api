@@ -1,4 +1,3 @@
-drop if exists movies;
 create table if not exists movies (
 	movie_id BIGSERIAL PRIMARY KEY,
 	name VARCHAR(120) NOT NULL,

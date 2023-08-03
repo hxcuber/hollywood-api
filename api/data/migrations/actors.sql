@@ -1,11 +1,12 @@
--- create table if not exists actors (
--- 	actor_id BIGSERIAL PRIMARY KEY,
--- 	first_name VARCHAR(50) NOT NULL,
--- 	last_name VARCHAR(50) NOT NULL,
--- 	gender VARCHAR(50) NOT NULL,
--- 	dob DATE NOT NULL,
--- 	email VARCHAR(50) NOT NULL
--- );
+drop if exists actors;
+create table if not exists actors (
+	actor_id BIGSERIAL PRIMARY KEY,
+	first_name VARCHAR(50) NOT NULL,
+	last_name VARCHAR(50) NOT NULL,
+	gender VARCHAR(50) NOT NULL,
+	dob DATE NOT NULL,
+	email VARCHAR(50) NOT NULL
+);
 insert into actors (first_name, last_name, gender, dob, email) values ('Christa', 'Hatchette', 'Female', '1963-06-28 23:43:31', 'chatchette0@geocities.jp');
 insert into actors (first_name, last_name, gender, dob, email) values ('Anett', 'Cattle', 'Female', '1987-06-17 13:50:22', 'acattle1@vimeo.com');
 insert into actors (first_name, last_name, gender, dob, email) values ('Robby', 'Nisuis', 'Male', '1980-06-02 08:29:27', 'rnisuis2@wikimedia.org');

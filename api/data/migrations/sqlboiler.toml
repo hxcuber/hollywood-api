@@ -1,0 +1,8 @@
+output = "../../internal/model"
+[psql]
+dbname = "hollywood"
+host   = "localhost"
+port   = 5432
+user   = "hxcuber"
+pass   = "12345678"
+sslmode = "disable"

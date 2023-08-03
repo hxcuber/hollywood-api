@@ -1,10 +1,11 @@
--- create table if not exists movies (
--- 	movie_id BIGSERIAL PRIMARY KEY,
--- 	name VARCHAR(120) NOT NULL,
--- 	main_actor_id BIGINT NOT NULL,
--- 	release_date DATE NOT NULL,
--- 	FOREIGN KEY(main_actor_id) REFERENCES actors(actor_id)
--- );
+drop if exists movies;
+create table if not exists movies (
+	movie_id BIGSERIAL PRIMARY KEY,
+	name VARCHAR(120) NOT NULL,
+	main_actor_id BIGINT NOT NULL,
+	release_date DATE NOT NULL,
+	FOREIGN KEY(main_actor_id) REFERENCES actors(actor_id)
+);
 insert into movies (name, main_actor_id, release_date) values ('Bad Fucking', 66, '2020-04-16 05:03:20');
 insert into movies (name, main_actor_id, release_date) values ('Suzy', 32, '2022-10-06 14:19:39');
 insert into movies (name, main_actor_id, release_date) values ('Veronica Guerin', 5, '2015-05-10 08:04:08');

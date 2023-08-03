@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"go_core/api/pkg/db/pg"
-	"go_core/api/pkg/testutil"
+	"github.com/hxcuber/hollywood-api/api/pkg/db/pg"
+	"github.com/hxcuber/hollywood-api/api/pkg/testutil"
 
 	pkgerrors "github.com/pkg/errors"
 	"github.com/stretchr/testify/require"

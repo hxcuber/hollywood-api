@@ -2,10 +2,11 @@ package repository
 
 import (
 	"context"
+	"github.com/hxcuber/hollywood-api/api/internal/repository/actor"
 	"time"
 
-	"go_core/api/internal/repository/system"
-	"go_core/api/pkg/db/pg"
+	"github.com/hxcuber/hollywood-api/api/internal/repository/system"
+	"github.com/hxcuber/hollywood-api/api/pkg/db/pg"
 
 	"github.com/cenkalti/backoff/v4"
 	pkgerrors "github.com/pkg/errors"
@@ -15,6 +16,10 @@ import (
 type Registry interface {
 	// System returns the system repo
 	System() system.Repository
+	// Actor returns the actor repo
+	Actor() actor.Repository
+	// Movies returns the actor repo
+	//Movies() movie.Repository
 	// DoInTx wraps operations within a db tx
 	DoInTx(ctx context.Context, txFunc func(ctx context.Context, txRepo Registry) error, overrideBackoffPolicy backoff.BackOff) error
 }

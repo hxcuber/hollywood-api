@@ -1,4 +1,5 @@
-output = "../../internal/models"
+output = "../../internal/repository/orm"
+pkgname = "orm"
 [psql]
 dbname = "hollywood"
 host   = "localhost"

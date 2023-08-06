@@ -15,7 +15,7 @@ func Testgo_coreDB(t *testing.T) {
 	pool, err := sql.Open("postgres", env.GetAndValidateF("DB_URL"))
 	require.NoError(t, err)
 
-	db := &go_coreDB{DB: pool}
+	db := &hollywoodDB{DB: pool}
 
 	_, err = db.Exec("DROP TABLE IF EXISTS instrumented_test_transactions")
 	require.NoError(t, err)
@@ -51,7 +51,7 @@ func Testgo_coreTx(t *testing.T) {
 	pool, err := sql.Open("postgres", env.GetAndValidateF("DB_URL"))
 	require.NoError(t, err)
 
-	db := &go_coreDB{DB: pool}
+	db := &hollywoodDB{DB: pool}
 
 	_, err = db.Exec("DROP TABLE IF EXISTS instrumented_test_transactions")
 	require.NoError(t, err)
@@ -64,7 +64,7 @@ func Testgo_coreTx(t *testing.T) {
 
 	transactor, err := db.BeginTx(context.Background(), nil)
 	require.NoError(t, err)
-	tx := &go_coreTx{Transactor: transactor}
+	tx := &hollywoodTx{Transactor: transactor}
 
 	defer func() {
 		_ = tx.Rollback()

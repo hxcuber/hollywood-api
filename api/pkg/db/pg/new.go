@@ -38,7 +38,7 @@ func NewPool(
 
 	log.Println("Postgres initialized")
 
-	return &go_coreDB{
+	return &hollywoodDB{
 		DB: conn,
 	}, nil
 }

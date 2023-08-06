@@ -1,0 +1,17 @@
+package movieRepository
+
+import (
+	"context"
+	"github.com/hxcuber/hollywood-api/api/internal/models"
+	"github.com/hxcuber/hollywood-api/api/internal/repository/convert/movieConvert"
+	"github.com/hxcuber/hollywood-api/api/internal/repository/orm"
+)
+
+func (i impl) GetMovieByID(ctx context.Context, id int64) (models.Movie, error) {
+	movieORMPointer, err := orm.FindMovie(ctx, i.dbConn, id)
+	if err != nil {
+		return models.Movie{}, err
+	}
+
+	return movieConvert.MovieOrmToModel(*movieORMPointer), nil
+}

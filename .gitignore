@@ -20,3 +20,5 @@
 # Go workspace file
 go.work
 .idea
+./api/cmd/hollywood-api/hollywood-api
+*.DS_Store

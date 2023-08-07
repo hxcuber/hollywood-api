@@ -1,8 +1,4 @@
 services:
-  api:
-    image: hollywood-api
-    ports:
-      - 3000:3000
   postgres:
     image: postgres:latest
     expose:
@@ -12,3 +8,18 @@ services:
     environment:
       POSTGRES_USER: hxcuber
       POSTGRES_PASSWORD: hxcuber
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    command: >
+      sh -c "psql -U hxcuber -c 'create table test' -c '\l'" 
+
+  api:
+    image: hollywood-api
+    ports:
+      - 3000:3000
+    depends_on:
+      postgres:
+        condition: service_healthy

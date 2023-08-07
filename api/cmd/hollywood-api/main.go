@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 	"github.com/hxcuber/hollywood-api/api/internal/api/router"
-	"github.com/hxcuber/hollywood-api/api/internal/controller/actorController"
-	"github.com/hxcuber/hollywood-api/api/internal/controller/movieController"
-	"github.com/hxcuber/hollywood-api/api/internal/controller/systemController"
+	"github.com/hxcuber/hollywood-api/api/internal/controller/actors"
+	"github.com/hxcuber/hollywood-api/api/internal/controller/movies"
+	"github.com/hxcuber/hollywood-api/api/internal/controller/systems"
 	"github.com/hxcuber/hollywood-api/api/internal/repository"
 	"github.com/hxcuber/hollywood-api/api/pkg/db/pg"
 	"github.com/hxcuber/hollywood-api/api/pkg/httpserv"
@@ -65,12 +65,13 @@ func run(ctx context.Context) error {
 func initRouter(
 	ctx context.Context,
 	dbConn pg.BeginnerExecutor) (router.Router, error) {
+	registry := repository.New(dbConn)
 	return router.New(
 		ctx,
 		strings.Split(os.Getenv("CORS_ALLOWED_ORIGINS"), ","),
 		os.Getenv("GQL_INTROSPECTION_ENABLED") == "true",
-		systemController.New(repository.New(dbConn)),
-		actorController.New(repository.New(dbConn)),
-		movieController.New(repository.New(dbConn)),
+		systems.New(registry),
+		actors.New(registry),
+		movies.New(registry),
 	), nil
 }

@@ -1,4 +1,4 @@
-package system
+package systems
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 
 // Controller represents the specification of this pkg
 type Controller interface {
-	// CheckReadiness checks if the system is ready for operation or not
+	// CheckReadiness checks if the systems is ready for operation or not
 	CheckReadiness(ctx context.Context) error
 }
 

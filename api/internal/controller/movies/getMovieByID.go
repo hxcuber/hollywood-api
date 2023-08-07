@@ -1,4 +1,4 @@
-package movie
+package movies
 
 import (
 	"context"
@@ -9,9 +9,9 @@ import (
 func (i impl) GetMovieByID(ctx context.Context, id int64) (models.Movie, error) {
 	var movie models.Movie
 
-	err := i.repo.DoInTx(ctx, func(ctx context.Context, txRepo repository.Registry) error {
+	err := i.repo.DoInTx(context.Background(), func(ctx context.Context, txRepo repository.Registry) error {
 		var err error
-		movie, err = i.repo.Movie().GetMovieByID(ctx, id)
+		movie, err = txRepo.Movie().GetMovieByID(ctx, id)
 		return err
 	}, nil)
 

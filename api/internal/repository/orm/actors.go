@@ -392,7 +392,7 @@ func AddActorHook(hookPoint boil.HookPoint, actorHook ActorHook) {
 	}
 }
 
-// One returns a single actor record from the query.
+// One returns a single actors record from the query.
 func (q actorQuery) One(ctx context.Context, exec boil.ContextExecutor) (*Actor, error) {
 	o := &Actor{}
 
@@ -464,7 +464,7 @@ func (q actorQuery) Exists(ctx context.Context, exec boil.ContextExecutor) (bool
 	return count > 0, nil
 }
 
-// MainActorMovies retrieves all the movie's Movies with an executor via main_actor_id column.
+// MainActorMovies retrieves all the movies's Movies with an executor via main_actor_id column.
 func (o *Actor) MainActorMovies(mods ...qm.QueryMod) movieQuery {
 	var queryMods []qm.QueryMod
 	if len(mods) != 0 {
@@ -593,7 +593,7 @@ func (actorL) LoadMainActorMovies(ctx context.Context, e boil.ContextExecutor, s
 }
 
 // AddMainActorMovies adds the given related objects to the existing relationships
-// of the actor, optionally inserting them as new records.
+// of the actors, optionally inserting them as new records.
 // Appends related to o.R.MainActorMovies.
 // Sets related.R.MainActor appropriately.
 func (o *Actor) AddMainActorMovies(ctx context.Context, exec boil.ContextExecutor, insert bool, related ...*Movie) error {
@@ -883,12 +883,12 @@ func (o ActorSlice) UpdateAll(ctx context.Context, exec boil.ContextExecutor, co
 	}
 	result, err := exec.ExecContext(ctx, sql, args...)
 	if err != nil {
-		return 0, errors.Wrap(err, "orm: unable to update all in actor slice")
+		return 0, errors.Wrap(err, "orm: unable to update all in actors slice")
 	}
 
 	rowsAff, err := result.RowsAffected()
 	if err != nil {
-		return 0, errors.Wrap(err, "orm: unable to retrieve rows affected all in update all actor")
+		return 0, errors.Wrap(err, "orm: unable to retrieve rows affected all in update all actors")
 	}
 	return rowsAff, nil
 }
@@ -1096,7 +1096,7 @@ func (o ActorSlice) DeleteAll(ctx context.Context, exec boil.ContextExecutor) (i
 	}
 	result, err := exec.ExecContext(ctx, sql, args...)
 	if err != nil {
-		return 0, errors.Wrap(err, "orm: unable to delete all from actor slice")
+		return 0, errors.Wrap(err, "orm: unable to delete all from actors slice")
 	}
 
 	rowsAff, err := result.RowsAffected()

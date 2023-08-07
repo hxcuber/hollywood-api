@@ -311,7 +311,7 @@ func AddMovieHook(hookPoint boil.HookPoint, movieHook MovieHook) {
 	}
 }
 
-// One returns a single movie record from the query.
+// One returns a single movies record from the query.
 func (q movieQuery) One(ctx context.Context, exec boil.ContextExecutor) (*Movie, error) {
 	o := &Movie{}
 
@@ -514,7 +514,7 @@ func (movieL) LoadMainActor(ctx context.Context, e boil.ContextExecutor, singula
 	return nil
 }
 
-// SetMainActor of the movie to the related item.
+// SetMainActor of the movies to the related item.
 // Sets o.R.MainActor to related.
 // Adds o to related.R.MainActorMovies.
 func (o *Movie) SetMainActor(ctx context.Context, exec boil.ContextExecutor, insert bool, related *Actor) error {
@@ -799,12 +799,12 @@ func (o MovieSlice) UpdateAll(ctx context.Context, exec boil.ContextExecutor, co
 	}
 	result, err := exec.ExecContext(ctx, sql, args...)
 	if err != nil {
-		return 0, errors.Wrap(err, "orm: unable to update all in movie slice")
+		return 0, errors.Wrap(err, "orm: unable to update all in movies slice")
 	}
 
 	rowsAff, err := result.RowsAffected()
 	if err != nil {
-		return 0, errors.Wrap(err, "orm: unable to retrieve rows affected all in update all movie")
+		return 0, errors.Wrap(err, "orm: unable to retrieve rows affected all in update all movies")
 	}
 	return rowsAff, nil
 }
@@ -1012,7 +1012,7 @@ func (o MovieSlice) DeleteAll(ctx context.Context, exec boil.ContextExecutor) (i
 	}
 	result, err := exec.ExecContext(ctx, sql, args...)
 	if err != nil {
-		return 0, errors.Wrap(err, "orm: unable to delete all from movie slice")
+		return 0, errors.Wrap(err, "orm: unable to delete all from movies slice")
 	}
 
 	rowsAff, err := result.RowsAffected()

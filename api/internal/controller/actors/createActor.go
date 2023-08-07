@@ -1,4 +1,4 @@
-package actor
+package actors
 
 import (
 	"context"
@@ -10,9 +10,9 @@ func (i impl) CreateActor(ctx context.Context, actor models.Actor) (models.Actor
 	// TODO
 	var newActor models.Actor
 
-	err := i.repo.DoInTx(ctx, func(ctx context.Context, txRepo repository.Registry) error {
+	err := i.repo.DoInTx(context.Background(), func(ctx context.Context, txRepo repository.Registry) error {
 		var err error
-		newActor, err = i.repo.Actor().CreateActor(ctx, actor)
+		newActor, err = txRepo.Actor().CreateActor(ctx, actor)
 		return err
 	}, nil)
 

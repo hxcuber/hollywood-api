@@ -1,4 +1,4 @@
-package movieHandler
+package movie
 
 import (
 	"github.com/hxcuber/hollywood-api/api/pkg/httpserv"

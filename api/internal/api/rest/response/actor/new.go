@@ -1,11 +1,11 @@
-package actorResponse
+package actor
 
 import "github.com/hxcuber/hollywood-api/api/internal/models"
 
-type ActorResponse struct {
+type Response struct {
 	*models.Actor
 }
 
-func New(a *models.Actor) *ActorResponse {
-	return &ActorResponse{a}
+func New(a *models.Actor) *Response {
+	return &Response{a}
 }

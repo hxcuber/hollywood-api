@@ -1,11 +1,11 @@
-package actorHandler
+package actor
 
-import "github.com/hxcuber/hollywood-api/api/internal/controller/actorController"
+import "github.com/hxcuber/hollywood-api/api/internal/controller/actors"
 
 type Handler struct {
-	actorCtrl actorController.Controller
+	actorCtrl actors.Controller
 }
 
-func New(actorCtrl actorController.Controller) Handler {
+func New(actorCtrl actors.Controller) Handler {
 	return Handler{actorCtrl: actorCtrl}
 }

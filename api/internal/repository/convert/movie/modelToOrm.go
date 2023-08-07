@@ -1,11 +1,11 @@
-package movieConvert
+package movie
 
 import (
 	"github.com/hxcuber/hollywood-api/api/internal/models"
 	"github.com/hxcuber/hollywood-api/api/internal/repository/orm"
 )
 
-func MovieModelToOrm(m models.Movie) orm.Movie {
+func ModelToOrm(m models.Movie) orm.Movie {
 	return orm.Movie{
 		MovieID:     m.MovieID,
 		Name:        m.Name,
@@ -14,10 +14,10 @@ func MovieModelToOrm(m models.Movie) orm.Movie {
 	}
 }
 
-func MovieSliceModelToOrm(ms models.MovieSlice) orm.MovieSlice {
+func SliceModelToOrm(ms models.MovieSlice) orm.MovieSlice {
 	var movies orm.MovieSlice
 	for _, m := range ms {
-		movie := MovieModelToOrm(m)
+		movie := ModelToOrm(m)
 		movies = append(movies, &movie)
 	}
 	return movies

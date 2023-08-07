@@ -1,4 +1,4 @@
-package healthHandler
+package health
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 	"github.com/hxcuber/hollywood-api/api/pkg/httpserv"
 )
 
-// CheckReadiness checks for system readiness
+// CheckReadiness checks for systems readiness
 func (h Handler) CheckReadiness() http.HandlerFunc {
 	return httpserv.ErrHandlerFunc(func(w http.ResponseWriter, r *http.Request) error {
 		err := h.systemCtrl.CheckReadiness(r.Context())

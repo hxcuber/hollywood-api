@@ -1,4 +1,4 @@
-package movie
+package movies
 
 import (
 	"context"
@@ -9,9 +9,9 @@ import (
 func (i impl) GetAllMovies(ctx context.Context) (models.MovieSlice, error) {
 	var movies models.MovieSlice
 
-	err := i.repo.DoInTx(ctx, func(ctx context.Context, txRepo repository.Registry) error {
+	err := i.repo.DoInTx(context.Background(), func(ctx context.Context, txRepo repository.Registry) error {
 		var err error
-		movies, err = i.repo.Movie().GetAllMovies(ctx)
+		movies, err = txRepo.Movie().GetAllMovies(ctx)
 		return err
 	}, nil)
 

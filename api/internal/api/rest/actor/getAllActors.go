@@ -1,4 +1,4 @@
-package actorHandler
+package actor
 
 import (
 	"github.com/hxcuber/hollywood-api/api/pkg/httpserv"

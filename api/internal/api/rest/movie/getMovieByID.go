@@ -1,4 +1,4 @@
-package movieHandler
+package movie
 
 import (
 	"github.com/go-chi/chi/v5"

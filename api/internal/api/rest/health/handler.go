@@ -1,13 +1,13 @@
-package healthHandler
+package health
 
-import "github.com/hxcuber/hollywood-api/api/internal/controller/systemController"
+import "github.com/hxcuber/hollywood-api/api/internal/controller/systems"
 
 // Handler is the web handler for this pkg
 type Handler struct {
-	systemCtrl systemController.Controller
+	systemCtrl systems.Controller
 }
 
 // New instantiates a new Handler and returns it
-func New(systemCtrl systemController.Controller) Handler {
+func New(systemCtrl systems.Controller) Handler {
 	return Handler{systemCtrl: systemCtrl}
 }

@@ -1,11 +1,11 @@
-package actorConvert
+package actor
 
 import (
 	"github.com/hxcuber/hollywood-api/api/internal/models"
 	"github.com/hxcuber/hollywood-api/api/internal/repository/orm"
 )
 
-func ActorModelToOrm(a models.Actor) orm.Actor {
+func ModelToOrm(a models.Actor) orm.Actor {
 	return orm.Actor{
 		ActorID:   a.ActorID,
 		FirstName: a.FirstName,
@@ -16,10 +16,10 @@ func ActorModelToOrm(a models.Actor) orm.Actor {
 	}
 }
 
-func ActorSliceModelToOrm(as models.ActorSlice) orm.ActorSlice {
+func SliceModelToOrm(as models.ActorSlice) orm.ActorSlice {
 	var actors orm.ActorSlice
 	for _, a := range as {
-		actor := ActorModelToOrm(a)
+		actor := ModelToOrm(a)
 		actors = append(actors, &actor)
 	}
 	return actors

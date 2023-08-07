@@ -1,4 +1,4 @@
-package movieConvert
+package movie
 
 import (
 	"github.com/hxcuber/hollywood-api/api/internal/models"

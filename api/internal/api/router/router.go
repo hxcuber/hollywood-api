@@ -4,11 +4,11 @@ import (
 	"context"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/hxcuber/hollywood-api/api/internal/api/rest/actorHandler"
-	"github.com/hxcuber/hollywood-api/api/internal/api/rest/movieHandler"
+	"github.com/hxcuber/hollywood-api/api/internal/api/rest/actor"
+	"github.com/hxcuber/hollywood-api/api/internal/api/rest/movie"
 	"net/http"
 
-	"github.com/hxcuber/hollywood-api/api/internal/api/rest/healthHandler"
+	"github.com/hxcuber/hollywood-api/api/internal/api/rest/health"
 )
 
 // Router defines the routes & handlers of the app
@@ -16,9 +16,9 @@ type Router struct {
 	ctx                  context.Context
 	corsOrigins          []string
 	isGQLIntrospectionOn bool
-	healthRESTHandler    healthHandler.Handler
-	actorRESTHandler     actorHandler.Handler
-	movieRESTHandler     movieHandler.Handler
+	healthRESTHandler    health.Handler
+	actorRESTHandler     actor.Handler
+	movieRESTHandler     movie.Handler
 }
 
 // Handler returns the Handler for use by the server
@@ -34,11 +34,11 @@ func (rtr Router) Handler() http.Handler {
 	)
 
 	r.Get("/actors", rtr.actorRESTHandler.GetAllActors())
-	r.Get("/actor/{id}", rtr.actorRESTHandler.GetActorById())
-	r.Post("/actor/create", rtr.actorRESTHandler.PostActor())
+	r.Get("/actors/{id}", rtr.actorRESTHandler.GetActorById())
+	r.Post("/actors/create", rtr.actorRESTHandler.PostActor())
 
 	r.Get("/movies", rtr.movieRESTHandler.GetAllMovies())
-	r.Get("/movie/{id}", rtr.movieRESTHandler.GetMovieById())
+	r.Get("/movies/{id}", rtr.movieRESTHandler.GetMovieById())
 
 	r.Get("/_/ready", rtr.healthRESTHandler.CheckReadiness())
 	return r

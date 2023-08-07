@@ -34,11 +34,11 @@ func (rtr Router) Handler() http.Handler {
 	)
 
 	r.Get("/actors", rtr.actorRESTHandler.GetAllActors())
-	r.Get("/actors/{id}", rtr.actorRESTHandler.GetActorById())
-	r.Post("/actors/create", rtr.actorRESTHandler.PostActor())
+	r.Get("/actor/{id}", rtr.actorRESTHandler.GetActorById())
+	r.Post("/actor/create", rtr.actorRESTHandler.PostActor())
 
 	r.Get("/movies", rtr.movieRESTHandler.GetAllMovies())
-	r.Get("/movies/{id}", rtr.movieRESTHandler.GetMovieById())
+	r.Get("/movie/{id}", rtr.movieRESTHandler.GetMovieById())
 
 	r.Get("/_/ready", rtr.healthRESTHandler.CheckReadiness())
 	return r
